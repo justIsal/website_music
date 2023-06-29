@@ -1,0 +1,23 @@
+
+    <div class="flex items-center justify-center">
+        <div
+            class="bg-[url('img/bg.jpg')] bg-cover w-full h-screen z-10 relative flex items-end before:w-full before:h-full before:absolute before:bg-black before:opacity-50">
+
+        </div>
+        <div class="mx-auto mt-16 sm:w-2/3 lg:w-1/2 text-white">
+            <h1 class="text-center text-3xl font-semibold">LOGIN</h1>
+            <p class="text-center">Masukan username dan password anda!</p>
+            <form action="/login" class="px-4" method="post">
+                <p>username</p>
+                <input type="text" class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="username">
+                <p>password</p>
+                <input type="password" class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="password">
+                <input type="submit"
+                    class="w-full h-10 text-white bg-red-400 rounded-md pl-2 cursor-pointer mt-3 hover:bg-red-500"
+                    name="submit" value="Login">
+            </form>
+            <ul class="text-center mt-3"><a href="/signup"
+                    class="text-blue-600 font-semibold hover:text-blue-200">Sign-up</a>
+            </ul>
+        </div>
+    </div>

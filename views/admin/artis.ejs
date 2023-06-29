@@ -1,0 +1,33 @@
+<%- include('../layout/header_admin')%>
+<div class="my-3 w-full bg-slate-100 box p-4">
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Id Artis</th>
+                <th>Nama Artis</th>
+                <th>Genre</th>
+                <th>Album</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let no = 1 %>
+            <% data.forEach((item)=> { %>
+                <tr>
+                    <td class="text-center"><%= no++ %></td>
+                    <td class="py-2"><%= item.id_artis %></td>
+                    <td class="py-2"><%= item.nama_artis %></td>
+                    <td class="py-2"><%= item.id_genre %></td>
+                    <td class="py-2"><%= item.id_album %></td>
+                    <td class="py-2 text-center">
+                        <a class="text-xl pr-1"> <i class="fi fi-ss-trash text-red-400" onclick="Delete(event,'<%=item.nama_artis%>','/deleteArtis/<%=item.id_artis%>')"></i></a>
+                        <a href="/updateArtis/<%=item.id_artis%>"><i class="fi fi-ss-edit text-blue-700"></i></a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<a href="/addArtis" class="fixed text-5xl text-green-500 right-16 bottom-16 hover:text-green-700"><i class="fi fi-ss-square-plus cursor-pointer"></i></a>
+<%- include('../layout/footer_admin')%>

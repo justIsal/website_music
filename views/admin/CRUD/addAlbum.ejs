@@ -1,0 +1,25 @@
+<%- include('../../layout/header_admin')%>
+    <div class="my-3 w-full bg-slate-100 box p-4 flex top-10 right-0">
+        <div class="m-auto w-full">
+            <form action="/createAlbum" class="px-4 w-full" method="post">
+                <p>id album</p>
+                <input type="text" class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="id_album">
+                <p>nama album</p>
+                <input type="text" class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="nama_album">
+                <p>id_artis</p>
+                <select class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="id_artis">
+                    <optgroup label="Pilih Id artis">
+                        <% artis.forEach(item=> {%>
+                            <option value="<%=item.id_artis%>"><%=item.id_artis%></option>
+                        <% })%>
+                    </optgroup>
+                </select>
+                <p>Tahun rilis</p>
+                <input type="date" class="text-black w-full h-10 bg-slate-200 rounded-md px-4 pl-2" name="tahun_rilis">
+                <input type="submit"
+                    class="w-full h-10 text-white bg-blue-400 rounded-md pl-2 cursor-pointer mt-3 hover:bg-blue-500"
+                    name="submit" value="Tambah">
+            </form>
+        </div>
+    </div>
+<%- include('../../layout/footer_admin')%>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EUPHONY</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css'>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    },
+                    margin: {
+                        '292': '292px',
+                    },
+                    padding: {
+                        'a': '2px'
+                    },
+                    width: {
+                        '1244': '1244px',
+                    },
+                    height: {
+                        '27': '113px',
+                        '17': '60px',
+                        '640': '645px'
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-800">
+    <div class="absolute z-50 w-full h-full justify-center items-center hidden before:w-full before:bg-black before:h-full before:absolute before:left-0 before:bottom-0 before:opacity-50 before:-z-10"
+        id="card-add">
+        <div class="w-96 bg-slate-300 rounded-sm p-3">
+            <div class="flex items-center justify-between z-20 mb-4">
+                <h1 class="font-bold text-xl">Tambah playlist</h1>
+                <p class="cursor-pointer" id="card-add-close">
+                    <i class="fi fi-ss-cross"></i>
+                </p>
+            </div>
+            <form action="/addPlaylist" method="post" class="flex items-center gap-5">
+                <!-- <input type="file" name="" id=""> -->
+                <div class="w-full">
+                    <p>nama playlist</p>
+                    <input type="text" name="nama_playlist" class="h-10 w-full pl-2 rounded-sm">
+                    <p>description</p>
+                    <textarea name="description" class="p-2 h-28 w-full rounded sm" cols="25" rows="10"
+                        placeholder="Add on optional description"></textarea>
+                    <input type="submit" value="Tambah" class="p-2 bg-blue-500 mt-2 text-white cursor-pointer">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="bg-slate-800 lg:w-72 h-640 fixed top-1 left-0">
+            <div class="bg-slate-700 rounded-lg">
+                <h1 class="pl-3 h-12 pt-3 text-yellow-500 border-b-2 border-red-700">EUPHONY</h1>
+                <ul class="w-full pb-2 text-white">
+                    <li class="my-3 pl-4"><a href="/index"><i class="fi fi-ss-home"></i> Home</a></li>
+                    <li class="my-3 pl-4"><a href="/allLagu"><i class="fi fi-ss-music"></i> All music</a></li>
+                </ul>
+            </div>
+            <div class="h-96 mt-1 bg-slate-700 rounded-lg">
+                <div class="flex items-center justify-between">
+                    <h2 class="pl-4 font-semibold text-red-300 pt-2">playlist</h2>
+                    <% if(locals.login) {%>
+                        <p class="mr-3 text-4xl text-white cursor-pointer" id="add-playlist">+</p>
+                        <%}%>
+                </div>
+                <!-- <div class="absolute z-50 w-full h-96 bg-black"></div> -->
+                <% if(locals.login){ %>
+                    <% playlist.forEach(items=> { %>
+                        <ul class="w-full px-2 pb-2 text-white">
+                            <li>
+                                <a href="/playlist/<%=items.id_playlist%>"
+                                    class="my-1 px-2 w-full bg-slate-600 h-16 rounded-lg hover:bg-slate-500 cursor-pointer flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-sm bg-[url('/img/icon.png')] bg-center bg-white">
+                                    </div>
+                                    <p>
+                                        <%=items.nama_playlist%>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                        <% }) %>
+                            <% } %>
+            </div>
+            <div class="h-27 mt-1 bg-slate-700 rounded-lg flex">
+                <ul class="flex flex-wrap justify-around w-full m-auto text-blue-500">
+                    <li class="m-2"><a href="#">#coldplay</a></li>
+                    <li class="m-2"><a href="#">#Noah</a></li>
+                    <li class="m-2"><a href="#">#TheBeatles</a></li>
+                    <li class="m-2"><a href="#">#RockAlternatif</a></li>
+                    <li class="m-2"><a href="#">#BandJoel</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="w-full lg:ml-292 rounded-lg h-640 bg-slate-700 overflow-auto mt-1">
+            <div class="fixed z-10 w-full lg:w-1244 flex justify-end items-center bg-red-700 h-12 rounded-tl-lg">
+                <div class="user flex items-center" id="user">
+                    <% if(locals.login){ %>
+                        <span class="text-slate-100 mr-2">
+                            <%=locals.name%>
+                        </span>
+                        <% } else {%>
+                            <span class="text-slate-100 mr-2">
+                                <%=locals.name%>
+                            </span>
+                            <% } %>
+                                <i
+                                    class="fi fi-ss-circle-user text-3xl text-slate-300 mr-4 pt-1 hover:text-slate-100 cursor-pointer"></i>
+                                <div
+                                    class="modals absolute w-40 bg-slate-800 right-6 top-11 rounded-sm text-white text-sm px-2 hidden">
+                                    <ul class="flex-col h-full">
+                                        <li class="my-2 p-2 hover:text-slate-300"><a href="#">Account</a></li>
+                                        <li class="my-2 p-2 hover:text-slate-300"><a href="#">Profile</a></li>
+                                        <li class="my-2 p-2 hover:text-slate-300"><a href="#">Settings</a></li>
+                                        <% if(locals.login) {%>
+                                            <li class="my-2 p-2 hover:text-slate-300 border-t border-slate-400"><a
+                                                    href="#" id="logout" onclick="logout(event)">Log
+                                                    Out</a></li>
+                                            <% } else {%>
+                                                <li class="my-2 p-2 hover:text-slate-300 border-t border-slate-400"><a
+                                                        href="/">Login</a></li>
+                                                <% } %>
+                                    </ul>
+                                </div>
+                </div>
+            </div>
+

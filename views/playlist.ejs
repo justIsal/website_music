@@ -1,0 +1,104 @@
+<%- include('layout/header')%>
+    <!-- begin -->
+    <div class="wrapper mt-12">
+
+        <div class="mb-4 h-80 w-full bg-white relative">
+            <div class="flex items-center justify-end p-3">
+                <i class="fi fi-bs-menu-dots-vertical text-2xl font-bold cursor-pointer" id="option-playlist"
+                    onclick="addCard()"></i>
+            </div>
+            <div class="absolute w-36 right-5 top-3 p-1 text-white rounded-sm bg-slate-700 hidden" id="card-option">
+                <div class="flex justify-between p-1">
+                    <p class="font-bold text-slate-100">Option</p>
+                    <i class="fi fi-ss-cross text-sm cursor-pointer" id="remove-option" onclick="removeCard()"></i>
+                </div>
+                <ul>
+                    <li class="my-1 cursor-pointer hover:bg-slate-500 p-2"><a href="#" id="update-playlist"
+                            onclick="addClass()">Edit playlist</a>
+                    </li>
+                    <li class="my-1 cursor-pointer hover:bg-slate-500 p-2"><a class="" id="remove-playlist"
+                            onclick="dropPlaylist(event,'/removePlaylist/<%=data[0].id_playlist%>','<%=data[0].nama_playlist%>')">Hapus
+                            playlist</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-end mt-28">
+                <div class="bg-header bg-black"></div>
+                <div class="m-7">
+                    <h1 class="text-5xl uppercase"><%=data[0].nama_playlist%></h1>
+                    <p class="text-lg"><%=data[0].description%></p>
+                    <p class="text-sm"><%=data[0].nama_playlist%></p>
+                </div>
+            </div>
+        </div>
+        <div class="container text-white h-64">
+            <% if(status) { %>
+                <table class="w-full" cellpadding="6">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Title</td>
+                            <td>Artis</td>
+                            <td>Album</td>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-200 ">
+                        <%i=0 %>
+                            <%data.forEach(element=> { %>
+                                <tr class="hover:bg-slate-500 cursor-pointer">
+                                    <audio>
+                                        <source src="/lagu/<%=element.path %>" type="audio/mpeg">
+                                    </audio>
+                                    <td>
+                                        <%=i+=1 %>
+                                    </td>
+                                    <td
+                                        onclick="playing('<%=element.judul_lagu %>','<%=element.path%>','<%=element.nama_album%>')">
+                                        <%=element.judul_lagu %>
+                                    </td>
+                                    <td>Oasis</td>
+                                    <td>Paradise ...</td>
+                                    <td>
+                                        <i class="fi fi-bs-menu-dots-vertical"
+                                            onclick="dropLaguPlaylist(event,'<%=element.id_lagu %>','<%=element.id_playlist %>','<%=element.judul_lagu %>')"></i>
+                                    </td>
+                                </tr>
+                                <% //let lirik=element.lirik %>
+                                    <%- //lirik.replace( /\n/g, "<br>" )%>
+                                        <%}) %>
+                    </tbody>
+                </table>
+                <%} else {%>
+                    <p>Tidak ada lagu</p>
+                    <a href="/allLagu" class="p-4 text-blue-500">tambah lagu+ </i></a>
+                    <% } %>
+        </div>
+    </div>
+    <!-- end -->
+
+    <!-- update playlist-->
+    <div class="absolute z-50 w-full h-full justify-center items-center hidden before:w-full top-0 left-0 before:bg-black before:h-full before:absolute before:left-0 before:bottom-0 before:opacity-50 before:-z-10"
+        id="card-update">
+        <div class="w-96 bg-slate-300 rounded-sm p-3">
+            <div class="flex items-center justify-between z-20 mb-4">
+                <h1 class="font-bold text-xl">Update playlist</h1>
+                <p class="cursor-pointer" id="card-update-close" onclick="removeClass()">
+                    <i class="fi fi-ss-cross"></i>
+                </p>
+            </div>
+            <form action="/editPlaylist/<%=data[0].id_playlist%>" method="post" class="flex items-center gap-5">
+                <!-- <input type="file" name="" id=""> -->
+                <div class="w-full">
+                    <p>nama playlist</p>
+                    <input type="text" name="nama_playlist" class="h-10 w-full pl-2 rounded-sm"
+                        value="<%=data[0].nama_playlist%>">
+                    <p>description</p>
+                    <textarea name="description" class="p-2 h-28 w-full rounded sm" cols="25" rows="10"
+                        placeholder="Add on optional description"><%=data[0].description%></textarea>
+                    <input type="submit" value="Update" class="p-2 bg-blue-500 mt-2 text-white cursor-pointer">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- update playlist end -->
+    <%- include('layout/footer') %>

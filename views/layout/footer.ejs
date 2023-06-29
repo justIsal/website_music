@@ -1,0 +1,41 @@
+    </div>
+    </div>
+    <audio id="player">
+        <source src="" type="audio/mpeg" id="source-audio">
+    </audio>
+    <div class="flex justify-between gap-2 items-center w-full h-24 px-8 text-white">
+        <div class="h-14 flex items-center w-80">
+            <div class="h-16 w-16">
+                <div class="w-full h-full bg-[url('/img/album/morning_glory.png')] bg-cover"></div>
+            </div>
+            <div class="ml-4 flex-col justify-center h-full items-center rounded-sm">
+                <p class="text-base mt-1" id="judul-lagu">-------</p>
+                <p class="text-sm mt-1" id="album-lagu" src="bebas">---------------</p>
+            </div>
+        </div>
+        <div class="flex-col w-96 justify-center items-center">
+            <div class="flex w-40 m-auto">
+                <a href="#" class="h-full flex items-center justify-center ">
+                    <i class="fi fi-ss-caret-left m-auto text-4xl inline-block"></i>
+                </a>
+                <a href="#"
+                    class="text-center text-white cursor-pointer border-2 border-stone-50 w-8 h-8 rounded-full flex justify-center items-center m-auto"
+                    id="playButton" onclick="playy()"><i class="fi fi-ss-play text-lg pl-a pt-1"></i></a>
+                <a href="#" class="h-full flex items-center">
+                    <i class="fi fi-ss-caret-right m-auto text-4xl"></i>
+                </a>
+            </div>
+
+            <div class="h-1 mt-2 w-full bg-white cursor-pointer rounded-sm" id="progressBar"
+                onclick="changePlaybackPosition(event)">
+                <div class="h-full bg-red-500 " id="progressIndicator"></div>
+            </div>
+        </div>
+        <div class="flex justify-end items-center w-80">
+            <i class="fi fi-ss-volume text-lg pt-1"></i>
+            <div class="h-1 w-24 bg-slate-500 ml-3 rounded-sm">
+                <div class="h-full w-4 bg-white rounded-l-sm"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/function.js"></script>

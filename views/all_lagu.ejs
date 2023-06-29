@@ -1,0 +1,54 @@
+<%- include('layout/header') %>
+    <div class="wrapper mt-12">
+        <div class="container text-white">
+            <table class="w-full" cellpadding="6">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Title</td>
+                        <td>Artis</td>
+                        <td>Album</td>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-200">
+                    <% i=0 %>
+                        <% data.forEach(element=> { %>
+                            <tr class="hover:bg-slate-500 cursor-pointer">
+                                <audio>
+                                    <source src="/lagu/<%=element.path %>" type="audio/mpeg">
+                                </audio>
+                                <td>
+                                    <%= i+=1 %>
+                                </td>
+                                <td
+                                    onclick="playing('<%=element.judul_lagu %>','<%=element.path%>','<%=element.nama_album%>')">
+                                    <%=element.judul_lagu %>
+                                </td>
+                                <td><%=element.nama_artis %></td>
+                                <td><%=element.nama_album %></td>
+                                <td>
+                                    <div class="">
+                                        <i class="fi fi-bs-menu-dots-vertical" id="close-option-lagu"></i>
+                                        <div class=" bg-slate-800 p-2 absolute z-10 right-20 hidden" id="list-playlist">
+                                            <ul>
+                                                <li><a href="#" class="p-1 font-bold">Tambah ke playlist</a></li>
+                                                <% playlist.forEach(items=> { %>
+                                                    <li class="hover:bg-slate-500 my-2">
+                                                        <a href="#" class="p-2"
+                                                            onclick="request('<%=items.id_playlist%>','<%=element.id_lagu%>')">
+                                                            <%=items.nama_playlist%>
+                                                        </a>
+                                                    </li>
+                                                    <% }) %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+                </tbody>
+            </table>
+            <!-- <a href="#" class="p-4 text-blue-500">tambah lagu+ </i></a> -->
+        </div>
+    </div>
+    <%- include('layout/footer') %>

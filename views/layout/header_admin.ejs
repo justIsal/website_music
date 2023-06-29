@@ -1,0 +1,64 @@
+
+    <div class="flex">
+        <div class="bg-slate-800 lg:w-64 fixed left-0 z-10">
+            <div class="bg-slate-700 h-screen">
+                <h1 class="pl-3 h-12 pt-3 text-yellow-500 border-b-2 border-red-700">EUPHONY</h1>
+                <ul class="w-full pb-2 text-white">
+                    <li class="my-1"><a
+                            class="inline-block w-full pl-4 py-2 border-l-4 border-slate-700 hover:bg-slate-500 hover:border-red-700"
+                            href="/admin"><i class="fi fi-ss-home mr-2"></i> Dashboard</a></li>
+                    <li class="my-1"><a
+                            class="inline-block w-full pl-4 py-2 border-l-4 border-slate-700 hover:bg-slate-500 hover:border-red-700"
+                            href="/user"><i class="fi fi-ss-headset mr-2"></i> User</a></li>
+                    <li class="my-1"><a
+                            class="inline-block w-full pl-4 py-2 border-l-4 border-slate-700 hover:bg-slate-500 hover:border-red-700"
+                            href="/artis"><i class="fi fi-ss-microphone mr-2"></i> Artis</a></li>
+                    <li class="my-1"><a
+                            class="inline-block w-full pl-4 py-2 border-l-4 border-slate-700 hover:bg-slate-500 hover:border-red-700"
+                            href="/lagu"><i class="fi fi-ss-music mr-2"></i> Lagu</a></li>
+                    <li class="my-1"><a
+                            class="inline-block w-full pl-4 py-2 border-l-4 border-slate-700 hover:bg-slate-500 hover:border-red-700"
+                            href="/album"><i class="fi fi-ss-album mr-2"></i> Album</a></li>
+                    <li class="my-1"><a
+                            class="inline-block w-full pl-4 py-2 border-l-4 border-slate-700 hover:bg-slate-500 hover:border-red-700"
+                            href="/getPlaylist"><i class="fi fi-bs-list-music mr-2"></i> Playlist</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="w-full lg:pl-250 box-border bg-slate-200">
+            <div class="sticky top-0 z-5 w-full flex justify-end items-center bg-red-700 h-12">
+                <div class="user flex items-center" id="user">
+                    <% if(locals.login){ %>
+                        <span class="text-slate-100 mr-2">
+                            <%=locals.name%>
+                        </span>
+                        <% } else {%>
+                            <span class="text-slate-100 mr-2">
+                                <%=locals.name%>
+                            </span>
+                            <% } %>
+                                <i
+                                    class="fi fi-ss-circle-user text-3xl text-slate-300 mr-4 pt-1 hover:text-slate-100 cursor-pointer"></i>
+                                <div
+                                    class="modals absolute w-40 bg-slate-800 right-6 top-11 rounded-sm text-white text-sm px-2 hidden">
+                                    <ul class="flex-col h-full">
+                                        <li class="my-2 p-2 hover:text-slate-300"><a href="#">Account</a></li>
+                                        <li class="my-2 p-2 hover:text-slate-300"><a href="#">Profile</a></li>
+                                        <li class="my-2 p-2 hover:text-slate-300"><a href="#">Settings</a></li>
+                                        <% if(locals.login) {%>
+                                            <li class="my-2 p-2 hover:text-slate-300 border-t border-slate-400"><a
+                                                    href="#" id="logout" onclick="logout(event)">Log
+                                                    Out</a></li>
+                                            <% } else {%>
+                                                <li class="my-2 p-2 hover:text-slate-300 border-t border-slate-400"><a
+                                                        href="/">Login</a></li>
+                                                <% } %>
+                                    </ul>
+                                </div>
+                </div>
+            </div>
+            <div class="mx-7 mt-3 flex items-center gap-3">
+                <i class="fi fi-ss-home text-xl"></i>
+                <h1 class="leading-3 text-xl"> <%= title %></h1>
+            </div>
+            <div class="bg-slate-200 h-screen px-8">

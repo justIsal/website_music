@@ -1,0 +1,40 @@
+<%- include('../../layout/header_admin')%>
+    <div class="my-3 w-full bg-slate-100 box p-4 flex top-10 right-0">
+        <div class="m-auto w-full">
+            <form action="/createLagu" class="px-4 w-full" method="post" enctype="multipart/form-data">
+                <p>judul lagu</p>
+                <input type="text" class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="judul_lagu">
+                <p>id artis</p>
+                <select class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="id_artis" value="">
+                    <optgroup label="Pilih Id artis">
+                        <% artis.forEach(item=> {%>
+                            <option value="<%=item.id_artis%>"><%=item.id_artis%></option>
+                        <% })%>
+                    </optgroup>
+                </select>
+                <p>lirik</p>
+                <textarea class="text-black w-full h-20 bg-slate-200 rounded-md pl-2" name="lirik" id="" cols="30" rows="10"></textarea>
+                <p>id album</p>
+                <select class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="id_album">
+                    <optgroup label="Pilih Id album">
+                        <% album.forEach(item=> {%>
+                            <option value="<%=item.id_album%>"><%=item.id_album%></option>
+                        <% })%>
+                    </optgroup>
+                </select>
+                <p>single</p>
+                <select class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" name="single">
+                    <optgroup label="single :">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                    </optgroup>
+                </select>
+                <p>File lagu</p>
+                <input class="text-black w-full h-10 bg-slate-200 rounded-md pl-2" type="file" name="filemp3" accept=".mp3">
+                <input type="submit"
+                    class="w-full h-10 text-white bg-blue-400 rounded-md pl-2 cursor-pointer mt-3 hover:bg-blue-500"
+                    name="submit" value="Tambah">
+            </form>
+        </div>
+    </div>
+    <%- include('../../layout/footer_admin')%>

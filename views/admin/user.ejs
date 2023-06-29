@@ -1,0 +1,33 @@
+<%- include('../layout/header_admin')%>
+    <div class="my-3 w-full bg-slate-100 box p-4">
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Id User</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let no = 1 %>
+                <% data.forEach((item)=> { %>
+                    <tr>
+                        <td class="text-center"><%= no++ %></td>
+                        <td class="py-2"><%= item.id_user %></td>
+                        <td class="py-2"><%= item.user_name %></td>
+                        <td class="py-2"><%= item.email_user %></td>
+                        <td class="py-2"><%= item.password_user %></td>
+                        <td class="py-2 text-center">
+                            <button class="text-xl pr-1" onclick="Delete(event,'<%=item.user_name%>','/deleteUser/<%=item.id_user%>')" id="deleteUser"> <i class="fi fi-ss-trash text-red-400"></i></button>
+                            <a href="/updateUser/<%=item.id_user%>"><i class="fi fi-ss-edit text-blue-700"></i></a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <a href="/addUser" class="fixed text-5xl text-green-500 right-16 bottom-16 hover:text-green-700"><i class="fi fi-ss-user-add cursor-pointer"></i></a>
+<%- include('../layout/footer_admin')%>

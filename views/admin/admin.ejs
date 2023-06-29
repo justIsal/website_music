@@ -1,0 +1,52 @@
+<%- include('../layout/header_admin')%>
+    <div class="w-full px-7 pb-20">
+        <div class="flex justify-around">
+            <h1 class="uppercase text-center mt-4"  onclick="diagram()">Statistic Pengunjung</h1>
+            <h1 class="uppercase text-center mt-4">Statistic Pengunjung</h1>
+        </div>
+        <div class="h-96 w-full mt-5 flex justify-between gap-7">
+            <div class="w-2/4 border-2 border-slate-300 p-3">
+                <canvas id="grafik"></canvas>
+            </div>
+            <div class="w-2/4 border-2 border-slate-300 p-3">
+                <canvas id="diagram"></canvas>
+            </div>
+        </div>
+        <div class="w-full flex flex-wrap justify-between mt-7">
+            <a href="/user"
+                class="h-28 w-64 rounded-sm border-2 border-slate-300 flex items-center justify-center gap-8 cursor-pointer background text-slate-600">
+                <i class="fi fi-ss-user text-6xl"></i>
+                <div class="h-full mt-8">
+                    <p class="text-4xl pb-1"><%=user%></p>
+                    <p class="text-xl">Data User</p>
+                </div>
+            </a>
+            <a href="/artis"
+                class="h-28 w-64 rounded-sm border-2 border-slate-300 flex items-center justify-around cursor-pointer background text-slate-600">
+                <i class="fi fi-ss-microphone text-6xl"></i>
+                <div class="h-full mt-8">
+                    <p class="text-4xl pb-1"><%=artis%></p>
+                    <p class="text-xl">Data Artis</p>
+                </div>
+            </a>
+            <a href="/lagu"
+                class="h-28 w-64 rounded-sm border-2 border-slate-300 flex items-center justify-around cursor-pointer background text-slate-600">
+                <i class="fi fi-ss-music text-6xl"></i>
+                <div class="h-full mt-8">
+                    <p class="text-4xl pb-1"><%=lagu%></p>
+                    <p class="text-xl">Data Lagu</p>
+                </div>
+            </a>
+            <a href="/getPlaylist"
+                class="h-28 w-64 rounded-sm border-2 border-slate-300 flex items-center justify-around cursor-pointer background text-slate-600">
+                <i class="fi fi-bs-list-music text-6xl"></i>
+                <div class="h-full mt-8">
+                    <p class="text-4xl pb-1"><%=playlist%></p>
+                    <p class="text-xl">Data Playlist</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <script src="/js/chart.js"></script>
+    <%- include('../layout/footer_admin')%>

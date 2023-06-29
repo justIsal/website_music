@@ -1,0 +1,37 @@
+<%- include('../layout/header_admin')%>
+<div class="my-3 w-full bg-slate-100 box p-4">
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Id Lagu</th>
+                <th>Judul Lagu</th>
+                <th>Nama Artis</th>
+                <!-- <th>Lirik</th> -->
+                <th>Album</th>
+                <th>Single</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let no = 1 %>
+            <% data.forEach((item)=> { %>
+                <tr>
+                    <td class="text-center"><%= no++ %></td>
+                    <td class="py-2"><%= item.id_lagu %></td>
+                    <td class="py-2"><%= item.judul_lagu %></td>
+                    <td class="py-2"><%= item.id_artis %></td>
+                    <!-- <td class="py-2"><%= //item.id_lirik%></td> -->
+                    <td class="py-2"><%= item.id_album%></td>
+                    <td class="py-2"><%= item.single%></td>
+                    <td class="py-2 text-center">
+                        <a class="text-xl pr-1" onclick="Delete(event,'<%=item.judul_lagu%>','/deleteLagu/<%=item.id_lagu%>')"> <i class="fi fi-ss-trash text-red-400"></i></a>
+                        <a href="/updateLagu/<%=item.id_lagu%>"><i class="fi fi-ss-edit text-blue-700"></i></a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<a href="/addLagu" class="fixed text-5xl text-green-500 right-16 bottom-16 hover:text-green-700"><i class="fi fi-ss-album-circle-plus cursor-pointer"></i></a>
+<%- include('../layout/footer_admin')%>
